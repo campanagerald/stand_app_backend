@@ -10,7 +10,7 @@ const makeHuddleRoute = ({ createhuddle }: { createhuddle: CreateHuddle }) => {
   const router = express.Router();
 
   router.post(
-    '/',
+    '/huddle',
     schemaValidator.body(
       Joi.object({
         name: Joi.string().required(),
@@ -26,7 +26,7 @@ const makeHuddleRoute = ({ createhuddle }: { createhuddle: CreateHuddle }) => {
 
         return response.ok(res)(huddleEntity);
       } catch (error) {
-        return handdleErrors(error);
+        return handdleErrors(res)(error);
       }
     }
   );
