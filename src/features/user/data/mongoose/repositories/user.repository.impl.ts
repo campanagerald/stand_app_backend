@@ -21,4 +21,8 @@ export default class UserRepositoryImpl implements UserRepository {
       updatedAt: user.updatedAt as Date,
     });
   }
+
+  async isEmailExists(email: string): Promise<boolean> {
+    return UserModel.exists({ email });
+  }
 }

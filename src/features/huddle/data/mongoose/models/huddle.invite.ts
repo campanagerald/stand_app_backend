@@ -26,4 +26,4 @@ const schema = new mongoose.Schema(
   }
 );
 
-export const HuddleInviteModel: mongoose.Model<HuddleInviteDoc> = mongoose.model<HuddleInviteDoc>('HuddleModel', schema);
+export const HuddleInviteModel: mongoose.Model<HuddleInviteDoc> = mongoose.model<HuddleInviteDoc>('HuddleInviteModel', schema);

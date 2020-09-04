@@ -6,7 +6,7 @@ import handdleErrors from '../../../core/utils/handle.errors';
 import Signup from '../domain/usecases/signup';
 import { response } from '../../../core/utils/response';
 
-const makeRegistrationRoute = ({ signup }: { signup: Signup }) => {
+const makeRegistrationRoutes = ({ signup }: { signup: Signup }) => {
   const router = express.Router();
 
   router.post(
@@ -23,11 +23,11 @@ const makeRegistrationRoute = ({ signup }: { signup: Signup }) => {
       try {
         const { user, token } = await signup.execute(req.body);
 
-        res.set('authorization', token);
+        res.set('authorization', `Bearer ${token}`);
 
-        response.ok(res)(user);
+        return response.ok(res)(Object.assign({}, { ...user, password: null }));
       } catch (error) {
-        return handdleErrors(error);
+        return handdleErrors(res)(error);
       }
     }
   );
@@ -35,5 +35,4 @@ const makeRegistrationRoute = ({ signup }: { signup: Signup }) => {
   return router;
 };
 
-export { makeRegistrationRoute };
-signup: Signup;
+export { makeRegistrationRoutes };
