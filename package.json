@@ -8,8 +8,9 @@
     "testEnvironment": "node"
   },
   "scripts": {
-    "test": "jest --watchAll --no-cache --coverage",
-    "start:dev": "ts-node-dev -r dotenv/config src/index.ts"
+    "test:dev": "jest --watchAll --no-cache --coverage",
+    "start:dev": "ts-node-dev -r dotenv/config src/index.ts",
+    "test": "jest --no-cache"
   },
   "dependencies": {
     "@hapi/boom": "9.1.0",
