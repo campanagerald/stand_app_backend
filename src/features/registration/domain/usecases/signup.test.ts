@@ -17,7 +17,7 @@ describe('User usecases', () => {
     mockUserRepository = {} as UserRepository;
 
     usecase = new Signup({
-      jWTService: mockJwtService,
+      jwtService: mockJwtService,
       bcryptService: mockBcryptService,
       userRepository: mockUserRepository,
     });
